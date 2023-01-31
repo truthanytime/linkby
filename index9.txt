@@ -1,0 +1,5 @@
+'INSERT INTO campaign_stats(
+    "campaignId", views, metadata)
+    VALUES ($1, $2, $3)
+    ON CONFLICT("campaignId") DO UPDATE SET views=views+$2, medtadata=jsonb_set(medtadata, '{"ignoredDate",
+      "overrideDate","incrementInteger"}', '{0,1}', $4, '{0,2}',$5, false)',[data.campaignId, data.views, data.metadata, data.metadata.overridedta,data.metadata.incrementInteger,]
